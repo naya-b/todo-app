@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:todo_app/core/error/failures.dart';
 import 'package:todo_app/core/strings/failures.dart';
-import 'package:todo_app/features/tasks/data/models/task_model.dart';
 import 'package:todo_app/features/tasks/domain/entities/tasks.dart';
 import 'package:todo_app/features/tasks/domain/use_cases/get_all_tasks.dart';
 import 'package:todo_app/features/tasks/domain/use_cases/update_checkbox.dart';

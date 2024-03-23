@@ -32,5 +32,3 @@ class logoutUserEvent extends AuthEvent {
 
   logoutUserEvent({this.onSuccess});
 }
-
-//class RefreshEvent extends AuthEvent {}

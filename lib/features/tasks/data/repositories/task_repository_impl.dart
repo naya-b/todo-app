@@ -23,10 +23,8 @@ class TaskRepositoryImpl implements TasksRepository {
     //هون بدنا نعرف اول اذا الجهاز فيو نت مشان نعرف نطلب التاسكات من لوكال ولا الريموت
     if (await networkInfo.isConnected) {
       try {
-        print('2');
         final remoteTasks = await taskRemoteDataSource.getAllTasks();
-        print('3');
-        taskLocalDataSource.cacheTasks(remoteTasks);
+        //taskLocalDataSource.cacheTasks(remoteTasks);
         return Right(remoteTasks);
       } on ServerException {
         return Left(ServerFailure());
@@ -45,7 +43,6 @@ class TaskRepositoryImpl implements TasksRepository {
   Future<Either<Failure, Unit>> addTask(Tasks tasks) async {
     //لازم نحول ال tasks to taskmodel
     final TaskModel taskModel = TaskModel(
-        id: tasks.id,
         title: tasks.title,
         body: tasks.body,
         isDone: tasks.isDone,
@@ -59,7 +56,7 @@ class TaskRepositoryImpl implements TasksRepository {
         return Left(ServerFailure());
       }
     } else {
-      return Left(OfflineFailure()); // or left() ??? l صغيرة
+      return Left(OfflineFailure());
     }
   }
 
@@ -68,7 +65,6 @@ class TaskRepositoryImpl implements TasksRepository {
     Tasks tasks,
   ) async {
     final TaskModel taskModel = TaskModel(
-        id: tasks.id,
         title: tasks.title,
         body: tasks.body,
         isDone: tasks.isDone,
@@ -117,4 +113,3 @@ class TaskRepositoryImpl implements TasksRepository {
     }
   }
 }
-// معالجة تكرار الكود

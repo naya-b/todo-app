@@ -39,7 +39,6 @@ class _FormWidgetState extends State<FormWidget> {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       final task = Tasks(
-          id: 0, // i will delete this from app write
           title: _titleController.text,
           body: _bodyController.text,
           isDone: widget.isUpdate ? widget.task!.isDone : false,

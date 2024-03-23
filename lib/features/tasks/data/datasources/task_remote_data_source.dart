@@ -31,19 +31,16 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
   Future<List<TaskModel>> getAllTasks() async {
     try {
       final email2 = sharedPreferences.getString('email');
-      print('4');
       final data = await databases.listDocuments(
           databaseId: databaseId,
           collectionId: collectionId,
           queries: [Query.equal('createdBy', email2)]); // add queries
-      print('5');
       //_todos = data.documents;
       final List<TaskModel> taskModels = data.documents
           .map((jsonTaskModel) =>
               TaskModel.fromJson(jsonTaskModel.data, jsonTaskModel.$id))
           .toList();
       print(taskModels);
-      print('gg');
       return taskModels;
     } on ServerException {
       throw ServerException();
@@ -60,7 +57,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
         'body': taskModel.body,
         'isDone': false,
         'createdBy': email,
-        'id': taskModel.id,
       };
 
       final collection = await databases.createDocument(
@@ -72,7 +68,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
     } on ServerException {
       throw ServerException();
     }
-    // نص التاسع
   }
 
   @override

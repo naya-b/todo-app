@@ -3,9 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/features/authentecation/domain/entities/auth.dart';
 import 'package:todo_app/features/authentecation/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:todo_app/features/authentecation/presentation/widgets/login_page/text_form_field_widget.dart';
-import 'package:todo_app/features/tasks/presentation/manager/bloc/task/tasks_bloc.dart';
-
-import '../../../tasks/presentation/pages/tasks_page.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
