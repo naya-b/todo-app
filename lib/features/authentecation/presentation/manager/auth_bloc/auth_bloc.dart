@@ -40,9 +40,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         failureOrDoneMessage.fold((failure) {
           emit(ErrorState(message: _mapFailureToMessage(failure)));
         }, (bool) {
-          //TODO: Here is what I changed
           // BlocProvider.of<TasksBloc>(context).add(GetAllTasksEvent(event.auth.email));
-          emit(LoadedStateLogin(LoadedStateCheckParam(check: bool.check, email: bool.email)));
+          emit(LoadedStateLogin(
+              LoadedStateCheckParam(check: bool.check, email: bool.email)));
           //event.onSuccess?.call();
         });
       } else if (event is CheckUserEvent) {
@@ -52,7 +52,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         failureOrbool.fold((failure) {
           emit(ErrorState(message: _mapFailureToMessage(failure)));
         }, (bool) {
-          emit(LoadedStateCheck(LoadedStateCheckParam(check: bool.check, email: bool.email)));
+          emit(LoadedStateCheck(
+              LoadedStateCheckParam(check: bool.check, email: bool.email)));
         });
       } else if (event is logoutUserEvent) {
         // emit(LoadingState());
