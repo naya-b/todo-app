@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/theems/color_theme.dart';
 import 'package:todo_app/core/widgets/loading_widget.dart';
 import 'package:todo_app/features/authentecation/presentation/manager/auth_bloc/auth_bloc.dart';
-import 'package:todo_app/features/authentecation/presentation/pages/splash_page.dart';
 import 'package:todo_app/features/tasks/presentation/manager/bloc/task/tasks_bloc.dart';
 import 'package:todo_app/features/tasks/presentation/pages/add_update_delete_task_page.dart';
 import 'package:todo_app/features/tasks/presentation/widgets/taskspage/message_display_widget.dart';
@@ -28,10 +27,7 @@ class TasksPage extends StatelessWidget {
                 if (val == 'Logout') {
                   BlocProvider.of<AuthBloc>(context).add(
                     logoutUserEvent(onSuccess: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => SplashPage()),
-                      );
+                      Navigator.pushReplacementNamed(context, 'splashpage');
                     }),
                   );
                 }
@@ -74,14 +70,34 @@ Widget _buildBody() {
         if (state is LoadingTasksState) {
           return LoadingWidget();
         } else if (state is LoadedTasksState) {
-          return TaskListWidget(tasks: state.tasks);
+          if (!state.tasks.isEmpty) {
+            return TaskListWidget(tasks: state.tasks);
+          } else {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image(
+                    image: AssetImage('assets/no_data.png'),
+                  ),
+                  Text(
+                    'No Tasks Found',
+                    style: TextStyle(color: colorgray, fontSize: 27.0),
+                  ),
+                ],
+              ),
+            );
+          }
         } else if (state is ErrorTasksState) {
           return MessageDisplayWidget(message: state.message);
         } else if (state is CheckboxState) {
           print('state');
           BlocProvider.of<TasksBloc>(context).add(GetAllTasksEvent());
         }
-        return LoadingWidget();
+        return Text(
+          'Empty',
+          style: TextStyle(fontSize: 30.0),
+        );
       },
     ),
   );

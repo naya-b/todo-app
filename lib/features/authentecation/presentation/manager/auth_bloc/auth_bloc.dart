@@ -1,7 +1,7 @@
 import 'dart:ui';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:todo_app/core/error/failures.dart';
 import 'package:todo_app/core/strings/failures.dart';
 import 'package:todo_app/features/authentecation/data/models/auth_model.dart';
@@ -40,13 +40,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         failureOrDoneMessage.fold((failure) {
           emit(ErrorState(message: _mapFailureToMessage(failure)));
         }, (bool) {
-          // BlocProvider.of<TasksBloc>(context).add(GetAllTasksEvent(event.auth.email));
           emit(LoadedStateLogin(
               LoadedStateCheckParam(check: bool.check, email: bool.email)));
           //event.onSuccess?.call();
         });
       } else if (event is CheckUserEvent) {
-        print('cheeek');
         emit(LoadingState());
         final failureOrbool = await checkUserUsecase.call();
         failureOrbool.fold((failure) {
@@ -75,7 +73,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       case OfflineFailure:
         return OFFLINE_FAILURE_MESSAGE;
       default:
-        return "Unexpected Error , Please try again later .";
+        return "Unexpected Error , Please try again.";
     }
   }
 }

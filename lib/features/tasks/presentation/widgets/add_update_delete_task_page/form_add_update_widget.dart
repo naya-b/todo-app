@@ -27,7 +27,6 @@ class _FormWidgetState extends State<FormWidget> {
 
   @override
   void initState() {
-    print('initstate');
     if (widget.isUpdate) {
       _titleController.text = widget.task!.title;
       _bodyController.text = widget.task!.body;
@@ -90,7 +89,8 @@ class _FormWidgetState extends State<FormWidget> {
           ),
           TextFormField(
             controller: _bodyController,
-            validator: (val) => val!.isEmpty ? "Body Can't be empty" : null,
+            validator: (val) =>
+                val!.isEmpty ? "Description Can't be empty" : null,
             decoration: InputDecoration(
               labelText: 'Description',
               labelStyle:
@@ -113,14 +113,25 @@ class _FormWidgetState extends State<FormWidget> {
           SizedBox(
             height: 8.0,
           ),
-          ElevatedButton.icon(
-            onPressed: validateFormthenAddOrUpdateTask,
-            icon: widget.isUpdate ? Icon(Icons.edit) : Icon(Icons.add),
-            label: Text(widget.isUpdate ? 'Update' : 'Add'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: widget.isUpdate ? colorblue : colororange,
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('cancel'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: widget.isUpdate ? colorblue : colororange,
+              ),
             ),
-          ),
+            ElevatedButton.icon(
+              onPressed: validateFormthenAddOrUpdateTask,
+              icon: widget.isUpdate ? Icon(Icons.edit) : Icon(Icons.add),
+              label: Text(widget.isUpdate ? 'Edit' : 'Add'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: widget.isUpdate ? colorblue : colororange,
+              ),
+            ),
+          ]),
         ],
       ),
     );

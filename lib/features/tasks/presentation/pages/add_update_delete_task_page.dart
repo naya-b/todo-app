@@ -26,7 +26,7 @@ class AddUpdateDeleteTaskPage extends StatelessWidget {
         children: [
           Text(
             isUpdate
-                ? 'Update Task'
+                ? 'Edit Task'
                 : isDelete
                     ? 'Are you sure?'
                     : 'Add Task',
@@ -51,7 +51,6 @@ class AddUpdateDeleteTaskPage extends StatelessWidget {
               .showSuccessSnackBar(message: state.message, context: context);
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (_) => TasksPage()), (route) => false);
-          print('here will return getalltask');
           BlocProvider.of<TasksBloc>(context).add(GetAllTasksEvent());
         } else if (state is ErrorAddDeleteUpdateTasksState) {
           SnackBarMessage()

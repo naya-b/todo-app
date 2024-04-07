@@ -62,7 +62,6 @@ Future<void> init() async {
       addTask: sl(),
       updateTask: sl(),
       deleteTask: sl(),
-      //updateCheckbox: sl()
     ),
   );
 
@@ -90,7 +89,7 @@ Future<void> init() async {
   //!External
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() =>
-      sharedPreferences); // انا هون دايما بقلب الاقواس بعمل ارجاع لاوبجيكت من الكلاس
+      sharedPreferences); //  هون دايما بقلب الاقواس بعمل ارجاع لاوبجيكت من الكلاس
   sl.registerLazySingleton(() => InternetConnectionChecker());
   sl.registerLazySingleton(() => Account(client));
 }

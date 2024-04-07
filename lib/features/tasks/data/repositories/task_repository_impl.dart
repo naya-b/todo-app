@@ -23,8 +23,10 @@ class TaskRepositoryImpl implements TasksRepository {
     //هون بدنا نعرف اول اذا الجهاز فيو نت مشان نعرف نطلب التاسكات من لوكال ولا الريموت
     if (await networkInfo.isConnected) {
       try {
+        print('2');
         final remoteTasks = await taskRemoteDataSource.getAllTasks();
-        //taskLocalDataSource.cacheTasks(remoteTasks);
+        print('3');
+        taskLocalDataSource.cacheTasks(remoteTasks);
         return Right(remoteTasks);
       } on ServerException {
         return Left(ServerFailure());

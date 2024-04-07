@@ -14,6 +14,15 @@ class TextFormFieldWidgetRegistertPage extends StatelessWidget {
     return TextFormField(
       controller: controller,
       obscureText: showOrHide,
+      validator: (value) {
+        print('value $value');
+        if (hintText == 'Password') {
+          print('now');
+          print(hintText);
+          value!.length < 8 ? 'Password must be at least 8 characters' : null;
+        }
+      },
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(

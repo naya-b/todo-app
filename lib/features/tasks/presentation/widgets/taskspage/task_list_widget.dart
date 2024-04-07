@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/theems/color_theme.dart';
 import 'package:todo_app/features/tasks/domain/entities/tasks.dart';
-import 'package:todo_app/features/tasks/presentation/manager/bloc/add_delete_update_tasks/add_delete_update_tasks_bloc.dart';
 import 'package:todo_app/features/tasks/presentation/manager/bloc/task/tasks_bloc.dart';
 import 'package:todo_app/features/tasks/presentation/pages/add_update_delete_task_page.dart';
 
@@ -63,7 +62,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                 ),
                 subtitle: Text(
                   widget.tasks[index].body.toString(),
-                  style: TextStyle(color: Colors.black, fontSize: 15.0),
+                  style: TextStyle(color: Colors.black, fontSize: 16.0),
                 ),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -80,11 +79,3 @@ class _TaskListWidgetState extends State<TaskListWidget> {
         });
   }
 }
-
-// leading:  Text(
-// (index + 1).toString() ,
-// style: TextStyle(
-// color: Colors.white,
-// fontWeight: FontWeight.bold,
-// fontSize: 20.0),
-// ),

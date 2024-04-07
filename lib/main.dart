@@ -8,7 +8,6 @@ import 'package:todo_app/features/authentecation/presentation/pages/splash_page.
 import 'package:todo_app/features/tasks/presentation/manager/bloc/add_delete_update_tasks/add_delete_update_tasks_bloc.dart';
 import 'package:todo_app/features/tasks/presentation/manager/bloc/task/tasks_bloc.dart';
 import 'package:todo_app/features/tasks/presentation/pages/tasks_page.dart';
-
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -16,10 +15,6 @@ void main() async {
   await di.init();
   runApp(TodoApp());
 }
-
-// Future initialization(BuildContext? context) async {
-//   await Future.delayed(Duration(seconds: 3));
-// }
 
 class TodoApp extends StatelessWidget {
   @override

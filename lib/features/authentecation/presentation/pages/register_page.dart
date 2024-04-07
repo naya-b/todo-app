@@ -52,16 +52,18 @@ class RegisterPage extends StatelessWidget {
                     ),
                     TextFormFieldWidgetRegistertPage(
                       showOrHide: false,
-                      hintText: 'Email',
+                      hintText: 'Email: example@gmail.com',
                       controller: emailController,
                     ),
                     SizedBox(
                       height: 30,
                     ),
-                    TextFormFieldWidgetRegistertPage(
-                      showOrHide: true,
-                      hintText: 'Password',
-                      controller: passwordController,
+                    Form(
+                      child: TextFormFieldWidgetRegistertPage(
+                        showOrHide: true,
+                        hintText: 'Password',
+                        controller: passwordController,
+                      ),
                     ),
                     SizedBox(
                       height: 40,
@@ -87,7 +89,14 @@ class RegisterPage extends StatelessWidget {
                                   email: emailController.text,
                                   password: passwordController.text);
                               BlocProvider.of<AuthBloc>(context)
-                                  .add(CreateUserEvent(auth: auth));
+                                  .add(CreateUserEvent(
+                                auth: auth,
+                                // onSuccess: () {
+                                //   Navigator.pushReplacementNamed(
+                                //       context, 'loginpage');
+                                // }
+                              ));
+
                               // context
                               //     .read<AuthBloc>()
                               //     .add(CreateUserEvent(auth: auth));

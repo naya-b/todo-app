@@ -19,12 +19,10 @@ class AddDeleteUpdateTasksBloc
   final AddTaskUsecase addTask;
   final UpdateTaskUsecase updateTask;
   final DeleteTaskUsecase deleteTask;
-  //final UpdateCheckboxUsecase updateCheckbox;
   AddDeleteUpdateTasksBloc({
     required this.addTask,
     required this.updateTask,
     required this.deleteTask,
-    //required this.updateCheckbox,
   }) : super(AddDeleteUpdateTasksInitial()) {
     // ال initial state
     on<AddDeleteUpdateTasksEvent>((event, emit) async {
@@ -48,9 +46,6 @@ class AddDeleteUpdateTasksBloc
         emit(_eitherDoneMessageOrErrorState(
             failureOrMessageDone, DELETE_SUCCESS_MESSAGE));
       }
-      // else if (event is UpdateCheckboxEvent) {
-      //   final checkbox = await updateCheckbox(event.value, event.taskId);
-      // }
     });
   }
   AddDeleteUpdateTasksState _eitherDoneMessageOrErrorState(

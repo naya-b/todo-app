@@ -5,9 +5,6 @@ abstract class TasksEvent extends Equatable {
 }
 
 class GetAllTasksEvent extends TasksEvent {
-  // final String email;
-  // GetAllTasksEvent({required this.email});
-
   @override
   List<Object?> get props => [];
 }

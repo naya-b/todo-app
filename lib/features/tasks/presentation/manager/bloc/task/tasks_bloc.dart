@@ -24,7 +24,6 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         final failureOrTasks =
             await getAllTasksUsecases(); //هي احتمال ترجعلي failure واحتمال اترجع list عن طريق ال fold بقدر اعرف شو رجعت
         failureOrTasks.fold((failure) {
-          //event.email
           emit(ErrorTasksState(message: _mapFailureToMessage(failure)));
         }, (tasks) {
           emit(LoadedTasksState(tasks: tasks));

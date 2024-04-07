@@ -66,8 +66,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<Unit> logoutUser() async {
+    sharedPreferences.remove('email');
+    // await account.deleteSessions();
     await account.deleteSession(sessionId: 'current');
-
     return Future.value(unit);
   }
 }

@@ -12,15 +12,15 @@ class FormDeleteWidget extends StatelessWidget {
       children: [
         TextButton(
             onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('No')),
+        TextButton(
+            onPressed: () {
               BlocProvider.of<AddDeleteUpdateTasksBloc>(context)
                   .add(DeleteTaskEvent(taskId: taskId));
             },
             child: Text('yes')),
-        TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('No')),
       ],
     );
   }

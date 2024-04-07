@@ -29,12 +29,3 @@ class DeleteTaskEvent extends AddDeleteUpdateTasksEvent {
   @override
   List<Object?> get props => [taskId];
 }
-
-// class UpdateCheckboxEvent extends AddDeleteUpdateTasksEvent {
-//   final bool value;
-//   final String taskId;
-//
-//   UpdateCheckboxEvent({required this.value, required this.taskId});
-//   @override
-//   List<Object?> get props => throw UnimplementedError();
-// }

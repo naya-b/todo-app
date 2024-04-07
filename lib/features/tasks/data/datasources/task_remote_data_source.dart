@@ -1,5 +1,4 @@
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/core/error/exceptions.dart';
@@ -40,7 +39,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
           .map((jsonTaskModel) =>
               TaskModel.fromJson(jsonTaskModel.data, jsonTaskModel.$id))
           .toList();
-      print(taskModels);
       return taskModels;
     } on ServerException {
       throw ServerException();
@@ -106,7 +104,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
   @override
   Future<Unit> updateCheckbox(bool value, String taskId) async {
     try {
-      print('update check box');
       final updateDoc = await databases.updateDocument(
         databaseId: databaseId,
         collectionId: collectionId,
