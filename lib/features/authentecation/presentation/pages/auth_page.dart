@@ -41,8 +41,7 @@ Widget _buildBody(BuildContext context) {
           );
         }
       } else if (state is ErrorState) {
-        SnackBarMessage()
-            .showErrorSnackBar(message: state.message, context: context);
+        SnackBarMessage().showErrorSnackBar(message: state.message, context: context);
       }
     },
     builder: (context, state) {
@@ -53,6 +52,8 @@ Widget _buildBody(BuildContext context) {
         if (!state.param.check) {
           print('check false');
           return LoginPage();
+        } else {
+          //TODO : should disscuss this situation
         }
       } else if (state is LoadedStateLogin) {
         if (!state.param.check) {
